@@ -1,9 +1,11 @@
 {
   "name": "adventofcode",
   "version": "1.0.0",
-  "type": "module",
   "description": "Solutions for the yearly Advent of Code challenge",
-  "scripts": {},
+  "scripts": {
+    "test": "jest",
+    "build": "tsc -p tsconfig.build.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/katieraby/adventofcode.git"
@@ -15,8 +17,13 @@
   },
   "homepage": "https://github.com/katieraby/adventofcode#readme",
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "@types/node": "^20.10.3",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
   }
 }

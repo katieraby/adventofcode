@@ -1,3 +1,6 @@
+# Compiled output
+dist
+
 # Logs
 logs
 *.log
@@ -43,3 +46,6 @@ jspm_packages/
 
 # local vscode settings
 .vscode
+
+# Testing
+coverage
