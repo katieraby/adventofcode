@@ -1,19 +1,9 @@
+import { digitsSpelledOut } from "./consts";
+
 export const calculateFinalCalibrationValue = (input: string[]): number => {
   const values = input.map((string) => calculateSingleCalibrationValue(string));
   return sumCalibrationValues(values);
 };
-
-const digitsSpelledOut = [
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-];
 
 export const calculateSingleCalibrationValue = (input: string): number => {
   if (input === "") return 0;
