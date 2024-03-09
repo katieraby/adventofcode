@@ -1,17 +1,41 @@
-export const calculateCalibrationValue = (input: string[]): number => {
+export const calculateFinalCalibrationValue = (input: string[]): number => {
   const values = input.map((string) => calculateSingleCalibrationValue(string));
   return sumCalibrationValues(values);
 };
+
+const digitsSpelledOut = [
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+];
 
 export const calculateSingleCalibrationValue = (input: string): number => {
   if (input === "") return 0;
 
   const inputArray = input.split("");
-  const isNumber = (input: string) => /\d+/.test(input);
+  const isDigit = (input: string) => /\d+/.test(input);
   let numberString = "";
+  let iteratorString = "";
 
   for (let i = 0; i < inputArray.length; i++) {
-    if (isNumber(inputArray[i])) {
+    iteratorString += inputArray[i];
+
+    for (let j = 0; j < digitsSpelledOut.length; j++) {
+      if (iteratorString.includes(digitsSpelledOut[j])) {
+        numberString += j + 1;
+
+        // caters for edge cases where the last digit is the start of the next one
+        iteratorString = iteratorString.charAt(iteratorString.length - 1);
+      }
+    }
+
+    if (isDigit(inputArray[i])) {
       numberString += inputArray[i];
     }
   }

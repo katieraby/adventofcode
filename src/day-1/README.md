@@ -15,3 +15,33 @@ For example:
 In this example, the calibration values of these four lines are `12`, `38`, `15`, and `77`. Adding these together produces `142`.
 
 Consider your entire calibration document. What is the sum of all of the calibration values?
+
+## Part One Solution
+
+Sum of all the calibration values: `53974`
+
+# Part Two Problem Expansion
+
+Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
+
+Equipped with this new information, you now need to find the real first and last digit on each line. For example:
+
+`two1nine`
+`eightwothree`
+`abcone2threexyz`
+`xtwone3four`
+`4nineeightseven2`
+`zoneight234`
+`7pqrstsixteen`
+
+In this example, the calibration values are `29`, `83`, `13`, `24`, `42`, `14`, and `76`. Adding these together produces `281`.
+
+What is the sum of all of the calibration values?
+
+## Part Two Solution
+
+Sum of all calibration values: `52840`
+
+### Notes
+
+Had some trouble with part two, as my original answer was higher than expected. This was because I had not catered for an edge case in the input, whereby some of the digits spelled out shared a character. For example, `threeight` is both `3` and `8`. Ensured I added an extra test case for this, and added logic to re-use the last character of a digit spelled out.

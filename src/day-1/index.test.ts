@@ -1,19 +1,17 @@
 import {
-  calculateCalibrationValue,
+  calculateFinalCalibrationValue,
   calculateSingleCalibrationValue,
   sumCalibrationValues,
 } from "./index";
 
-import { parseInput } from "../utils/parse-input";
-
-describe("calculateCalibrationValues", () => {
+describe("calculateFinalCalibrationValues", () => {
   it("Given an array with a string of no numbers, returns an empty array", () => {
-    expect(calculateCalibrationValue(["inputstringnonumbers"])).toEqual(0);
+    expect(calculateFinalCalibrationValue(["inputstringnonumbers"])).toEqual(0);
   });
 
   it("Given an array with lots of strings with and without numbers, returns the value", () => {
     expect(
-      calculateCalibrationValue([
+      calculateFinalCalibrationValue([
         "1abc2",
         "pqr3stu8vwx",
         "a1b2c3d4e5f",
@@ -22,9 +20,18 @@ describe("calculateCalibrationValues", () => {
     ).toEqual(142);
   });
 
-  it("Given the full input calibration data, return the sum of the calibration values", () => {
-    const input = parseInput("day-1");
-    expect(calculateCalibrationValue(input)).toEqual(53974);
+  it("Given an array with lots of strings with digits spelled out, returns sum of the first and last digits", () => {
+    expect(
+      calculateFinalCalibrationValue([
+        "two1nine",
+        "eightwothree",
+        "abcone2threexyz",
+        "xtwone3four",
+        "4nineeightseven2",
+        "zoneight234",
+        "7pqrstsixteen",
+      ])
+    ).toEqual(281);
   });
 });
 
@@ -35,6 +42,20 @@ describe("calculateSingleCalibrationValue", () => {
 
   it("given a string of one number, returns the number twice together", () => {
     expect(calculateSingleCalibrationValue("and1")).toEqual(11);
+  });
+
+  it("given a string with one number specified in letters, treat it as a digit and return the number twice together", () => {
+    expect(calculateSingleCalibrationValue("andone")).toEqual(11);
+  });
+
+  it("given a string with two numbers specified in letters, returns the numbers together", () => {
+    expect(calculateSingleCalibrationValue("andonetwothreeoneandtwo")).toEqual(
+      12
+    );
+  });
+
+  it("given a string with two adjoining numbers spelled out, returns the two together", () => {
+    expect(calculateSingleCalibrationValue("threeight")).toEqual(38);
   });
 
   it("given a string of two numbers, returns the numbers together", () => {
