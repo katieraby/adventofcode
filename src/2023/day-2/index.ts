@@ -1,4 +1,4 @@
-import { parseInput } from "../utils/parse-input";
+import { parseInput } from '../../utils/parse-input';
 
 const possibleRedCubes = 12;
 const possibleGreenCubes = 13;
@@ -11,7 +11,7 @@ type Game = {
 };
 
 const splitStringIntoGame = (gameString: string): string[] =>
-  gameString.split(": ")[1].split("; ");
+  gameString.split(': ')[1].split('; ');
 
 export const isGamePossible = (game: Game): boolean => {
   return (
@@ -23,7 +23,7 @@ export const isGamePossible = (game: Game): boolean => {
 
 export const getGameId = (game: string): number => {
   // parseInt ignores the rest of the string after the number
-  return parseInt(game.split(" ")[1]);
+  return parseInt(game.split(' ')[1]);
 };
 
 export const sumGameIds = (gameNumbers: number[]): number => {

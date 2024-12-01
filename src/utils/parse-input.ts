@@ -1,14 +1,14 @@
-import path from "path";
-import fs from "node:fs";
+import path from 'path';
+import fs from 'node:fs';
 
-export const parseInput = (dayRef: string): string[] | [] => {
+export const parseInput = (year: string, dayRef: string): string[] | [] => {
   try {
     const data = fs.readFileSync(
-      path.resolve(__dirname, `../${dayRef}/input.txt`),
-      "utf8"
+      path.resolve(__dirname, `../${year}/${dayRef}/input.txt`),
+      'utf8'
     );
     if (!data) return [];
-    return data.split("\n");
+    return data.split('\n');
   } catch (err) {
     console.error(err);
     return [];
